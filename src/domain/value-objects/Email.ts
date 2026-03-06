@@ -14,7 +14,7 @@ export class Email {
       throw new Error("Invalid email");
     }
 
-    const emailRegex = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/;
+    const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
     if (!emailRegex.test(normalized)) {
       throw new ValidationError("Invalid email format");
