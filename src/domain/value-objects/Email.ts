@@ -9,7 +9,12 @@ export class Email {
 
   public static create(email: string): Email {
     const normalized = email.trim().toLowerCase();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (normalized.length > 254) {
+      throw new Error("Invalid email");
+    }
+
+    const emailRegex = /^[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$/;
 
     if (!emailRegex.test(normalized)) {
       throw new ValidationError("Invalid email format");
